@@ -44,7 +44,7 @@ $ yarn install
 # Fill .env data
 
 # Run the application in development mode
-$ yarn start:dev
+$ yarn start
 
 # The server will start at port: 3000 - go to http://localhost:3000
 
@@ -55,14 +55,14 @@ $ yarn start:dev
 
 # Fetch User by Nickname
 
-$ curl http://localhost:3000/:nickname
+$ ts-node src/index fetch :nickname
 
 # Get Users From DB 
 
-$ curl http://localhost:3000/users
+$ ts-node src/index get
 
 # Get Users from Location
 
-$ curl http://localhost:3000/users?location=:location
+$ ts-node src/index get :location
 
 ```
