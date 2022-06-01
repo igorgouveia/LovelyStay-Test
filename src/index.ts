@@ -1,16 +1,21 @@
-import express from "express";
-import { router } from "./router";
-import { database } from "./config/database";
+import { get } from "./app/controllers/mainController";
 
-const app = express();
+const program = require('commander');
+const { fetchData } = require('./app/controllers/mainController.ts');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(router);
+program
+    .command('fetch [nickname]')
+    .description('Fetch a nickname from Github')
+    .action(async (nickname: string) => {
+        const user = await fetchData(nickname)
+        console.log(user);
+    });
 
-database.connect()
-
-app.listen(process.env.PORT, () => {
-    console.log(`Listening at http://localhost:${process.env.PORT}`);
-  });
-  
+program
+    .command('get [location]')
+    .description('Fetch a users from DB')
+    .action(async (location: string) => {
+        const user = await get(location)
+        console.log(user);
+    });
+program.parse(process.argv);

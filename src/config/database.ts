@@ -3,10 +3,10 @@ import pgPromise, { IDatabase, IMain } from 'pg-promise';
 
 const connection: any = {
     host: process.env['DATABASE_URL'],
-    port:  process.env['DATABASE_PORT'],
-    database:  `${process.env['DATABASE_NAME']}`,
-    user:   `${process.env['DATABASE_USER']}`,
-    password:  `${process.env['DATABASE_PASS']}`,
+    port: process.env['DATABASE_PORT'],
+    database: `${process.env['DATABASE_NAME']}`,
+    user: `${process.env['DATABASE_USER']}`,
+    password: `${process.env['DATABASE_PASS']}`,
 }
 
 const pgp: IMain = pgPromise({
@@ -18,7 +18,7 @@ const pgp: IMain = pgPromise({
     }
 });
 
-const database: IDatabase<any> = pgp(connection); 
+const database: IDatabase<any> = pgp(connection);
 
 export {
     database
